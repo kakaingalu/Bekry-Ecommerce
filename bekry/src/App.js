@@ -6,57 +6,43 @@ import  Cart  from './components/Cart/Cart';
 import  Occassion  from './components/Occassions/Occasions';
 import  Delivery from './components/SamedayDelivery/Samedaydelivery';
 import {
-  createBrowserRouter, 
-  Link,
+  BrowserRouter as Router,
   Route,
-  createRoutesFromElements,
-  RouterProvider,
-  
-} from 'react-router-dom'; 
+  Routes,
+  Link,
+  Outlet,
+} from "react-router-dom";
 
 
 function App() {
-  const route = createBrowserRouter(
-    createRoutesFromElements(
-      <Route path='/' element={<Root />}>
+ 
+  
+  return (
+    <div className="App">
+
+    <Router>
+      <nav>
+        <Link to="/login">Login</Link>
+        <Link to='/occassion'>Occassion</Link>
+        <Link to='/product-list'>ProductList</Link>
+        <Link to='/delivery'>Delivery</Link>
+        <Link to='/cart'>Cart</Link>
+
+      </nav>
+      <Routes>
+        <Route path="/" element={<Outlet />} />
         <Route path='/login' element={<Login />}/>
         <Route path='/occassion' element={<Occassion />}/>
         <Route path='/product-list' element={<ProductList />}/>
         <Route path='/delivery' element={<Delivery />}/>
         <Route path='/cart' element={<Cart />}/>
-      </Route>
-      
-    )
-  )
-  return (
-    <div className="App">
-    <RouterProvider router={route} />
+
+      </Routes>
+    </Router>
   
     </div>
   );
 }
 
-const Root  =  () => {
-  return (
-    <>
-    <div>
-    <button>
-      <Link to='/login'>Login</Link>
-      </button>
-      <button>
-      <Link to='/occassion'>Occassion</Link>
-      </button>
-      <button>
-      <Link to='/product-list'>ProductList</Link>
-      </button>
-      <button>
-      <Link to='/delivery'>Delivery</Link>
-      </button><button>
-      <Link to='/cart'>Cart</Link>
-      </button>      
-    </div>
-    </>
-  )
-}
 
 export default App;
