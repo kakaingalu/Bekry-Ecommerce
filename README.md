@@ -33,7 +33,7 @@ npm install jwt-decode
 ```
 
 ## In this project we used React Contex to manage our props and states
-## json server was used to mock a fake backed because the main purpose of the project was to focus on the front end
+## json server was used to mock a fake back end because the main purpose of the project was to focus on the front end
 
 
 
