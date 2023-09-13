@@ -12,8 +12,8 @@ import {
   createRoutesFromElements,
   RouterProvider,
   
-} from 'react-router-dom';
-import ReactDOM from 'react-dom/client'
+} from 'react-router-dom'; 
+
 
 function App() {
   const route = createBrowserRouter(
