@@ -1,5 +1,9 @@
-import logo from './logo.svg';
 import './App.css';
+import Login from './components/Login/Login';
+import ProductList from './components/Products/ProductList';
+import Cart from './components/Cart/Cart';
+import Occassion from './components/Occassions/Occasions';
+import Delivery from './components/SamedayDelivery/Samedaydelivery';
 
 function App() {
   return (
@@ -7,7 +11,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          In ALX<code>  We rule</code>, we de best.
+          Edit <code>src/App.js</code> and save to reload.
         </p>
         <a
           className="App-link"
