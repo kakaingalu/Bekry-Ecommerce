@@ -14,7 +14,7 @@ import {
   Link,
   Outlet,
 } from "react-router-dom";
-import Shop from './components/Home/Shop';
+import Shop from './components/Shop/Shop';
 
 
 function App() {
