@@ -36,3 +36,36 @@
     transform: rotate(360deg);
   }
 }
+
+.li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  background-color: #F8B7B5;
+  height: 4rem;
+  justify-content: space-around;
+
+
+}
+
+.link {
+  text-decoration: none;
+  font-family: Poppins, sans-serif;
+  color: white;
+  font-weight: 400;
+  font-size: 1.2rem;
+
+  
+}
+.link:hover{
+  text-decoration: underline;
+  text-decoration-color: orangered;
+  text-decoration-thickness: 0.2rem;
+  text-decoration-skip: none;
+  padding-bottom: 1rem;
+}
+.shopBag {
+  filter: invert(100%);
+  object-fit: cover;
+  height: 1.4rem;
+}
