@@ -5,6 +5,8 @@ import  ProductList  from './components/Products/ProductList';
 import  Cart  from './components/Cart/Cart';
 import  Occassion  from './components/Occassions/Occasions';
 import  Delivery from './components/SamedayDelivery/Samedaydelivery';
+import bag from './Assets/bag-fill.svg'
+import person from './Assets/person-circle.svg';
 import {
   BrowserRouter as Router,
   Route,
@@ -22,15 +24,19 @@ function App() {
     <div className="App">
 
     <Router>
-      <nav>
-        <Link to='/shop'>Shop</Link>
-        <Link to='/occassion'>Occassion</Link>
-        <Link to='/product-list'>ProductList</Link>
-        <Link to='/delivery'>Delivery</Link>
-        <Link to="/login">Login</Link>
-        <Link to='/cart'>Cart</Link>
+      <div className="nav">
+        <nav className="li">
+          <Link className='link' to='/shop'>Shop</Link>
+          <Link className='link' to='/occassion'>Occassion</Link>
+          <Link className='link'to='/product-list'>ProductList</Link>
+          <Link className='link'to='/delivery'>Delivery</Link>
+          <Link className='link'to="/login"><img className="shopBag" src={person} alt="person svg" /></Link>
+          <Link className='link'to='/cart'><img className="shopBag" src={bag} alt="bag svg" /></Link>
 
-      </nav>
+        </nav>
+
+      </div>
+      
       <Routes>
         <Route path="/" element={<Outlet />} />
         <Route path="/shop" element={<Shop />} />
