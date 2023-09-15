@@ -26,40 +26,44 @@ function App() {
   const [user, setUser] = useState(null);
   const [products, setProduct] = useState([]);
   const [cart, setCart] = useState({});
+  const [token, setToken] = useState();
 
-  useEffect(() => {
-    const user = localStorage.getItem('user');
-    const parseUser = user ? JSON.parse(user) : null;
-    setUser(parseUser);
- },[]);
+//   useEffect(() => {
+//     const user = localStorage.getItem('user');
+//     const parseUser = user ? JSON.parse(user) : null;
+//     setUser(parseUser);
+//  },[]);
 
-  login = async(email, password) => {
-    const res = await axios.post('https//localhost:3001/login', {email, password}
-    ).catch((res) => {
-      return {status: 404, message: 'unauthorized'}
-    })
-    if (res.status === 200) {
-      const { email } = jwt_decode(res.data.accessToken)
-      const user = {
-        email,
-        token: res.data.accessToken,
-        accessLevel: email === 'admin@example.com' ? 0 : 1
-      }
-
-      this.setState({ user });
-      localStorage.setItem("user", JSON.stringify(user));
-      return true;
-    } else {
-      return false;
-    }
+  if(!token) {
+    return <Login setToken={setToken} />
   }
+  // const login = async(email, password) => {
+  //   const res = await axios.post('https//localhost:3001/login', {email, password}
+  //   ).catch((res) => {
+  //     return {status: 404, message: 'unauthorized'}
+  //   })
+  //   if (res.status === 200) {
+  //     const { email } = jwt_decode(res.data.accessToken)
+  //     const user = {
+  //       email,
+  //       token: res.data.accessToken,
+  //       accessLevel: email === 'admin@example.com' ? 0 : 1
+  //     }
 
-  logout = e => {
-    e.preventDefault();
-    this.setState({ user: null });
-    localStorage.removeItem("user");
-  };
-}
+  //     setUser({ user });
+  //     localStorage.setItem("user", JSON.stringify(user));
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
+
+  // const logout = e => {
+  //   e.preventDefault();
+  //   setUser(null);
+  //   localStorage.removeItem("user");
+  // };
+
 
   
   return (
@@ -68,12 +72,12 @@ function App() {
       user,
       cart,
       products,
-      removeFromCart,
-      addToCart,
+      // removeFromCart,
+      // addToCart,
       login,
-      addProduct,
-      clearCart,
-      checkout
+      // addProduct,
+      // clearCart,
+      // checkout
     }}
     >
       <div className="App">

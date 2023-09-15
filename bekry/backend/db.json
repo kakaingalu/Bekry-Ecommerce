@@ -1,5 +1,22 @@
 {
-  "users": [
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "user": [
     {
       "email": "regular@example.com",
       "password": "$2a$10$2myKMolZJoH.q.cyXClQXufY1Mc7ETKdSaQQCC6Fgtbe0DCXRBELG",
@@ -9,6 +26,11 @@
       "email": "admin@example.com",
       "password": "$2a$10$w8qB40MdYkMs3dgGGf0Pu.xxVOOzWdZ5/Nrkleo3Gqc88PF/OQhOG",
       "id": 2
+    },
+    {
+      "email": "ad@example.com",
+      "password": "pass",
+      "id": 3
     }
   ],
   "products": [
@@ -43,6 +65,13 @@
       "price": 109.99,
       "shortDesc": "Nulla facilisi. Curabitur at lacus ac velit ornare lobortis.",
       "description": "Cras sagittis. Praesent nec nisl a purus blandit viverra. Ut leo. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Fusce a quam."
+    }
+  ],
+  "login": [
+    {
+      "email": "ad@example.com",
+      "password": "pass",
+      "id": 3
     }
   ]
 }
