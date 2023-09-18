@@ -16,7 +16,7 @@ import {
   Link,
   Outlet,
 } from "react-router-dom";
-import Shop from './components/Shop/Shop';
+import Shop from './components/Products/Shop';
 import Context from './Context';
 import AddProduct from './components/addProduct/addProduct';
 
@@ -26,43 +26,52 @@ function App() {
   const [user, setUser] = useState(null);
   const [products, setProduct] = useState([]);
   const [cart, setCart] = useState({});
-  const [token, setToken] = useState();
 
-//   useEffect(() => {
-//     const user = localStorage.getItem('user');
-//     const parseUser = user ? JSON.parse(user) : null;
-//     setUser(parseUser);
-//  },[]);
 
-  if(!token) {
-    return <Login setToken={setToken} />
-  }
-  // const login = async(email, password) => {
-  //   const res = await axios.post('https//localhost:3001/login', {email, password}
-  //   ).catch((res) => {
-  //     return {status: 404, message: 'unauthorized'}
-  //   })
-  //   if (res.status === 200) {
-  //     const { email } = jwt_decode(res.data.accessToken)
-  //     const user = {
-  //       email,
-  //       token: res.data.accessToken,
-  //       accessLevel: email === 'admin@example.com' ? 0 : 1
-  //     }
+  useEffect(() => {
+    async function fetchData() {
+      let user = localStorage.getItem("user");
+      user = user ? JSON.parse(user) : null;
 
-  //     setUser({ user });
-  //     localStorage.setItem("user", JSON.stringify(user));
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
+      try {
+        const response = await axios.get('http://localhost:3001/products');
+        setProduct(response.data);
+        setUser(user);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
 
-  // const logout = e => {
-  //   e.preventDefault();
-  //   setUser(null);
-  //   localStorage.removeItem("user");
-  // };
+    fetchData();
+  }, []); 
+
+
+   const login = async(email, password) => {
+     const res = await axios.post('https//localhost:3001/login', {email, password}
+     ).catch((res) => {
+       return {status: 404, message: 'unauthorized'}
+     })
+     if (res.status === 200) {
+       const { email } = jwt_decode(res.data.accessToken)
+       const user = {
+         email,
+         token: res.data.accessToken,
+         accessLevel: email === 'admin@example.com' ? 0 : 1
+       }
+
+       setUser({ user });
+       localStorage.setItem("user", JSON.stringify(user));
+       return true;
+     } else {
+       return false;
+     }
+   }
+
+   const logout = e => {
+     e.preventDefault();
+     setUser(null);
+     localStorage.removeItem("user");
+   };
 
 
   
