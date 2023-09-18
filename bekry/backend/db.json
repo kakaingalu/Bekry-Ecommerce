@@ -36,7 +36,7 @@
   "products": [
     {
       "id": "hdmdu0t80yjkfqselfc",
-      "name": "Chocolate Mouse slices",
+      "name": "chocolate mouse",
       "stock": 10,
       "price": 2599.99,
       "shortDesc": "Nulla facilisi. Curabitur at lacus ac velit ornare lobortis.",
@@ -44,7 +44,7 @@
     },
     {
       "id": "3dc7fiyzlfmkfqseqam",
-      "name": "Classic Carrot Cake",
+      "name": "carrot cake",
       "stock": 20,
       "price": 2999.99,
       "shortDesc": "Nulla facilisi. Curabitur at lacus ac velit ornare lobortis.",
@@ -52,7 +52,7 @@
     },
     {
       "id": "aoe8wvdxvrkfqsew67",
-      "name": "Strawberry Cupcake",
+      "name": "strawberry cupcake",
       "stock": 15,
       "price": 149.99,
       "shortDesc": "Nulla facilisi. Curabitur at lacus ac velit ornare lobortis.",
@@ -60,9 +60,33 @@
     },
     {
       "id": "bmfrurdkswtkfqsf15j",
-      "name": "Death By Chocolate",
+      "name": "Death by chocolate",
       "stock": 5,
       "price": 109.99,
+      "shortDesc": "Nulla facilisi. Curabitur at lacus ac velit ornare lobortis.",
+      "description": "Cras sagittis. Praesent nec nisl a purus blandit viverra. Ut leo. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Fusce a quam."
+    },
+    {
+      "id": "bmfrurdkswtkfqsf19j",
+      "name": "Classic white cake",
+      "stock": 5,
+      "price": 25000,
+      "shortDesc": "Nulla facilisi. Curabitur at lacus ac velit ornare lobortis.",
+      "description": "Cras sagittis. Praesent nec nisl a purus blandit viverra. Ut leo. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Fusce a quam."
+    },
+    {
+      "id": "bmfrurdkswtkfqsf14j",
+      "name": "Rustic wedding cake",
+      "stock": 5,
+      "price": 28000,
+      "shortDesc": "Nulla facilisi. Curabitur at lacus ac velit ornare lobortis.",
+      "description": "Cras sagittis. Praesent nec nisl a purus blandit viverra. Ut leo. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Fusce a quam."
+    },
+    {
+      "id": "bmfrurdkswtkfqsf12j",
+      "name": "3 Tier wedding cake",
+      "stock": 5,
+      "price": 22000,
       "shortDesc": "Nulla facilisi. Curabitur at lacus ac velit ornare lobortis.",
       "description": "Cras sagittis. Praesent nec nisl a purus blandit viverra. Ut leo. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Fusce a quam."
     }

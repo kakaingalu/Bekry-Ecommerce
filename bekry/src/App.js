@@ -16,7 +16,7 @@ import {
   Link,
   Outlet,
 } from "react-router-dom";
-import Shop from './components/Shop/Shop';
+import Shop from './components/Products/Shop';
 import Context from './Context';
 import AddProduct from './components/addProduct/addProduct';
 
@@ -26,54 +26,52 @@ function App() {
   const [user, setUser] = useState(null);
   const [products, setProduct] = useState([]);
   const [cart, setCart] = useState({});
-  const [token, setToken] = useState();
 
-  async function login(credentials) {
-    return fetch('http://localhost:3001/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(credentials)
-    })
-    .then(data => data.json())
-  }
 
-//   useEffect(() => {
-//     const user = localStorage.getItem('user');
-//     const parseUser = user ? JSON.parse(user) : null;
-//     setUser(parseUser);
-//  },[]);
+  useEffect(() => {
+    async function fetchData() {
+      let user = localStorage.getItem("user");
+      user = user ? JSON.parse(user) : null;
 
-  if(!token) {
-    return <Login setToken={setToken} />
-  }
-  // const login = async(email, password) => {
-  //   const res = await axios.post('https//localhost:3001/login', {email, password}
-  //   ).catch((res) => {
-  //     return {status: 404, message: 'unauthorized'}
-  //   })
-  //   if (res.status === 200) {
-  //     const { email } = jwt_decode(res.data.accessToken)
-  //     const user = {
-  //       email,
-  //       token: res.data.accessToken,
-  //       accessLevel: email === 'admin@example.com' ? 0 : 1
-  //     }
+      try {
+        const response = await axios.get('http://localhost:3001/products');
+        setProduct(response.data);
+        setUser(user);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
 
-  //     setUser({ user });
-  //     localStorage.setItem("user", JSON.stringify(user));
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
+    fetchData();
+  }, []); 
 
-  // const logout = e => {
-  //   e.preventDefault();
-  //   setUser(null);
-  //   localStorage.removeItem("user");
-  // };
+
+   const login = async(email, password) => {
+     const res = await axios.post('https//localhost:3001/login', {email, password}
+     ).catch((res) => {
+       return {status: 404, message: 'unauthorized'}
+     })
+     if (res.status === 200) {
+       const { email } = jwt_decode(res.data.accessToken)
+       const user = {
+         email,
+         token: res.data.accessToken,
+         accessLevel: email === 'admin@example.com' ? 0 : 1
+       }
+
+       setUser({ user });
+       localStorage.setItem("user", JSON.stringify(user));
+       return true;
+     } else {
+       return false;
+     }
+   }
+
+   const logout = e => {
+     e.preventDefault();
+     setUser(null);
+     localStorage.removeItem("user");
+   };
 
 
   
@@ -101,16 +99,15 @@ function App() {
             <Link className='link' to='/product-list'>ProductList</Link>
             <Link className='link' to='/delivery'>Delivery</Link>
             
-            {/* {!user ? ( */}
+            {!user ? (
               <Link className='link' to="/login">
                 <img className="shopBag" src={person} alt="person svg" />
               </Link>
-            {/* // ) //: (
-            //   // <Link to='/' onClick={logout} className='link'>
-            //   //   Logout
-            //   // </Link>
-            // // )
-            // } */}
+            ) : (
+              <Link to='/' onClick={logout} className='link'>
+                Logout
+              </Link>
+            )}
 
             <Link className='link' to='/cart'><img className="shopBag" src={bag} alt="bag svg" />
               <span>{Object.keys(cart).length}</span>
