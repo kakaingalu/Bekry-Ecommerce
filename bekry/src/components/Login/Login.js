@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import withContext from '../../withContext';
+// import PropTypes from 'prop-types';
 
 const Login = ({ context }) => {
   const [formData, setFormData] = useState({
@@ -21,16 +22,32 @@ const Login = ({ context }) => {
       return;
     }
 
-    const loggedIn = await context.login(username, password);
+    const response = await login({ username, password });
 
-    if (!loggedIn) {
+    if (response.status === 'success') {
+      // Assuming the response contains a 'status' field indicating success
+      // You may need to adjust this based on the actual response format
+      // Call a function to handle successful login, e.g., set user context
+      context.setUser(response.user); // Set user context here
+    } else {
       setFormData({ ...formData, error: "Invalid Credentials" });
     }
   };
 
+  // Add this handleSubmit function to handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const token = await login({
+      username: formData.username,
+      password: formData.password
+    });
+    // Assuming you have a setToken function in your context
+    context.setToken(token);
+  };
+
   const navigate = useNavigate();
 
-  return !context.user ? (
+  return (
     <>
       <div className="hero is-primary">
         <div className="hero-body container">
@@ -39,7 +56,7 @@ const Login = ({ context }) => {
       </div>
       <br />
       <br />
-      <form onSubmit={login}>
+      <form onSubmit={handleSubmit}>
         <div className="columns is-mobile is-centered">
           <div className="column is-one-third">
             <div className="field">
@@ -72,9 +89,11 @@ const Login = ({ context }) => {
         </div>
       </form>
     </>
-  ) : (
-    navigate("/shop")
   );
 };
+
+// Login.propTypes = {
+//   setToken: PropTypes.func.isRequired
+// }
 
 export default withContext(Login);

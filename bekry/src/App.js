@@ -28,6 +28,17 @@ function App() {
   const [cart, setCart] = useState({});
   const [token, setToken] = useState();
 
+  async function login(credentials) {
+    return fetch('http://localhost:3001/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(credentials)
+    })
+    .then(data => data.json())
+  }
+
 //   useEffect(() => {
 //     const user = localStorage.getItem('user');
 //     const parseUser = user ? JSON.parse(user) : null;
@@ -90,15 +101,16 @@ function App() {
             <Link className='link' to='/product-list'>ProductList</Link>
             <Link className='link' to='/delivery'>Delivery</Link>
             
-            {!user ? (
+            {/* {!user ? ( */}
               <Link className='link' to="/login">
                 <img className="shopBag" src={person} alt="person svg" />
               </Link>
-            ) : (
-              <Link to='/' onClick={logout} className='link'>
-                Logout
-              </Link>
-            )}
+            {/* // ) //: (
+            //   // <Link to='/' onClick={logout} className='link'>
+            //   //   Logout
+            //   // </Link>
+            // // )
+            // } */}
 
             <Link className='link' to='/cart'><img className="shopBag" src={bag} alt="bag svg" />
               <span>{Object.keys(cart).length}</span>
