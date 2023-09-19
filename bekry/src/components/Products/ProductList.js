@@ -1,6 +1,9 @@
 import React from 'react';
+import './Products.css'
 import ProductItem from './ProductItem';
 import withContext from '../../withContext';
+import HeaderImg from '../../Assets/headerImg.jpg';
+
 
 const ProductList = props => {
     const { products } = props.context;
@@ -13,10 +16,13 @@ const ProductList = props => {
                 </div>
             </div>
             <div>
+                <div className='headerImage'>
+                    <img src={HeaderImg} alt='header Image'  />
+                </div>
                 <div>
                     {products && products.length ? (
                         products.map((product, index) => (
-                            <ProductItem 
+                            <ProductItem
                                 product={product}
                                 key={index}
                                 addToCart={props.context.addToCart}
