@@ -1,36 +1,36 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import withContext from '../../withContext';
+import withContext from "../../withContext";
 
-const Login = ({ context }) => {
-  const [formData, setFormData] = useState({
+const Login = (props) => {
+  const [state, setState] = useState({
     username: "",
     password: "",
     error: "",
   });
+  const navigate = useNavigate();
 
-  const handleChange = (e) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value, error: "" });
+  const handleChange = (e) => setState({ ...state, [e.target.name]: e.target.value, error: "" });
 
-  const login = async (e) => {
+  const login = (e) => {
     e.preventDefault();
 
-    const { username, password } = formData;
+    const { username, password } = state;
     if (!username || !password) {
-      setFormData({ ...formData, error: "Fill all fields!" });
+      setState({ ...state, error: "Fill all fields!" });
       return;
     }
 
-    const loggedIn = await context.login(username, password);
-
-    if (!loggedIn) {
-      setFormData({ ...formData, error: "Invalid Credentials" });
-    }
+    props.context.login(username, password).then((loggedIn) => {
+      if (!loggedIn) {
+        setState({ ...state, error: "Invalid Credentials" });
+      } else {
+        navigate("/products");
+      }
+    });
   };
 
-  const navigate = useNavigate();
-
-  return !context.user ? (
+  return !props.context.user ? (
     <>
       <div className="hero is-primary">
         <div className="hero-body container">
@@ -44,37 +44,21 @@ const Login = ({ context }) => {
           <div className="column is-one-third">
             <div className="field">
               <label className="label">Email: </label>
-              <input
-                className="input"
-                type="email"
-                name="username"
-                onChange={handleChange}
-              />
+              <input className="input" type="email" name="username" onChange={handleChange} />
             </div>
             <div className="field">
               <label className="label">Password: </label>
-              <input
-                className="input"
-                type="password"
-                name="password"
-                onChange={handleChange}
-              />
+              <input className="input" type="password" name="password" onChange={handleChange} />
             </div>
-            {formData.error && (
-              <div className="has-text-danger">{formData.error}</div>
-            )}
+            {state.error && <div className="has-text-danger">{state.error}</div>}
             <div className="field is-clearfix">
-              <button className="button is-primary is-outlined is-pulled-right">
-                Submit
-              </button>
+              <button className="button is-primary is-outlined is-pulled-right">Submit</button>
             </div>
           </div>
         </div>
       </form>
     </>
-  ) : (
-    navigate("/shop")
-  );
+  ) : null;
 };
 
 export default withContext(Login);

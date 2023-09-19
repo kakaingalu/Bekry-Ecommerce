@@ -48,9 +48,9 @@ const ProductItem = (props) => {
             <div className="imgContainer">
                 <div className='img'>
                 {filteredImages.map((image, index) => (
-                    <figure>
-                        <img src={image.src} key={index} alt={image.alt} width="100" height="100" />
-
+                    <figure key={index}>
+                        <img src={image.src} alt={image.alt} width="100" height="100" />
+                    
                     </figure>
 
                 ))}
