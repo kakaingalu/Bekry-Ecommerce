@@ -40,10 +40,11 @@ const ProductItem = (props) => {
             alt: '3 Tier wedding cake',
         }
     ]
-    const filteredImages = images.filter(image => image.alt === product.name); 
+    const filteredImages = images.filter(image => image.alt === product.name);
 
     return (
         <div>
+
             <div className="imgContainer">
                 <div className='img'>
                 {filteredImages.map((image, index) => (
@@ -51,7 +52,7 @@ const ProductItem = (props) => {
                         <img src={image.src} key={index} alt={image.alt} width="100" height="100" />
 
                     </figure>
-                    
+
                 ))}
                 </div>
                 <div className='productName'>
@@ -76,9 +77,9 @@ const ProductItem = (props) => {
                     >
                         Add to Cart
                     </button>
-                
+
                 </div>
-                
+
             </div>
 
         </div>

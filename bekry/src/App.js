@@ -43,7 +43,7 @@ function App() {
     }
 
     fetchData();
-  }, []); 
+  }, []);
 
 
    const login = async(email, password) => {
@@ -74,7 +74,7 @@ function App() {
    };
 
 
-  
+
   return (
     <Context.Provider
     value={{
@@ -98,7 +98,7 @@ function App() {
             <Link className='link' to='/occassion'>Occassion</Link>
             <Link className='link' to='/product-list'>ProductList</Link>
             <Link className='link' to='/delivery'>Delivery</Link>
-            
+
             {!user ? (
               <Link className='link' to="/login">
                 <img className="shopBag" src={person} alt="person svg" />
@@ -115,12 +115,12 @@ function App() {
             {user && user.accessLevel < 1 &&(
               <Link className='link' to='/addProduct'>AddProduct</Link>
             )}
-            
+
 
           </nav>
 
         </div>
-        
+
         <Routes>
           <Route path="/" element={<Outlet />} />
           <Route path="/shop" element={<Shop />} />
@@ -133,7 +133,7 @@ function App() {
 
         </Routes>
       </Router>
-    
+
       </div>
     </Context.Provider>
   );
