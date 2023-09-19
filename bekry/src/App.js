@@ -5,8 +5,6 @@ import './App.css';
 import Login  from './components/Login/Login';
 import  ProductList  from './components/Products/ProductList';
 import  Cart  from './components/Cart/Cart';
-import  Occassion  from './components/Occassions/Occasions';
-import  Delivery from './components/SamedayDelivery/Samedaydelivery';
 import bag from './Assets/bag-fill.svg'
 import person from './Assets/person-circle.svg';
 import {
@@ -15,36 +13,35 @@ import {
   Routes,
   Link,
   Outlet,
+  useNavigate
 } from "react-router-dom";
 import Shop from './components/Products/Shop';
 import Context from './Context';
 import AddProduct from './components/addProduct/addProduct';
 
-
-function App() {
+function App(props) {
 
   const [user, setUser] = useState(null);
   const [products, setProduct] = useState([]);
   const [cart, setCart] = useState({});
+  // const navigate = useNavigate();
 
 
   useEffect(() => {
-    async function fetchData() {
-      let user = localStorage.getItem("user");
-      user = user ? JSON.parse(user) : null;
+    const fetchData = async () => {
+      let storedUser = localStorage.getItem("user");
+      let storedCart = localStorage.getItem("cart");
 
-      try {
-        const response = await axios.get('http://localhost:3001/products');
-        setProduct(response.data);
-        setUser(user);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    }
+      const productsResponse = await axios.get('http://localhost:3001/products');
+      const productsData = productsResponse.data;
+
+      setUser(storedUser ? JSON.parse(storedUser) : null);
+      setCart(storedCart ? JSON.parse(storedCart) : {});
+      setProduct(productsData);
+    };
 
     fetchData();
   }, []);
-
 
    const login = async(email, password) => {
      const res = await axios.post('https//localhost:3001/login', {email, password}
@@ -73,7 +70,61 @@ function App() {
      localStorage.removeItem("user");
    };
 
+   const addProduct = (product, callback) => {
+    setProduct([...products, product]);
+    if (callback) callback();
+  };
 
+  const addToCart = (cartItem) => {
+    const updatedCart = { ...cart };
+    
+    if (updatedCart[cartItem.id]) {
+      updatedCart[cartItem.id].amount += cartItem.amount;
+    } else {
+      updatedCart[cartItem.id] = cartItem;
+    }
+    
+    if (updatedCart[cartItem.id].amount > cartItem.product.stock) {
+      updatedCart[cartItem.id].amount = cartItem.product.stock;
+    }
+    
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    setCart(updatedCart);
+  };
+
+  const removeFromCart = (cartItemId) => {
+    const updatedCart = { ...cart };
+    delete updatedCart[cartItemId];
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    setCart(updatedCart);
+  };
+  
+  const clearCart = () => {
+    const emptyCart = {};
+    localStorage.removeItem("cart");
+    setCart(emptyCart);
+  };
+  
+  const checkout = () => {
+    if (!props.user) {
+      // navigate("/login");
+      return;
+    }
+
+    const { cart, products } = props;
+
+    const updatedProducts = products.map((p) => {
+      if (cart[p.name]) {
+        p.stock = p.stock - cart[p.name].amount;
+
+        axios.put(`http://localhost:3001/products/${p.id}`, { ...p });
+      }
+      return p;
+    });
+
+    props.setProducts(updatedProducts);
+    props.clearCart();
+  };
 
   return (
     <Context.Provider
@@ -81,12 +132,12 @@ function App() {
       user,
       cart,
       products,
-      // removeFromCart,
-      // addToCart,
+      removeFromCart,
+      addToCart,
       login,
-      // addProduct,
-      // clearCart,
-      // checkout
+      addProduct,
+      clearCart,
+      checkout
     }}
     >
       <div className="App">
@@ -95,9 +146,7 @@ function App() {
         <div className="nav">
           <nav className="li">
             <Link className='link' to='/shop'>Shop</Link>
-            <Link className='link' to='/occassion'>Occassion</Link>
             <Link className='link' to='/product-list'>ProductList</Link>
-            <Link className='link' to='/delivery'>Delivery</Link>
 
             {!user ? (
               <Link className='link' to="/login">
@@ -124,9 +173,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Outlet />} />
           <Route path="/shop" element={<Shop />} />
-          <Route path='/occassion' element={<Occassion />}/>
           <Route path='/product-list' element={<ProductList />}/>
-          <Route path='/delivery' element={<Delivery />}/>
           <Route path='/login' element={<Login />}/>
           <Route path='/cart' element={<Cart />}/>
           <Route path='/addProduct' element={<AddProduct/>} />
