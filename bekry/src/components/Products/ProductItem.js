@@ -1,4 +1,5 @@
 import React from 'react';
+import './Products.css';
 import cakeSlice from '../../Assets/Chocolate_mouse.jpg';
 import carrot from '../../Assets/Carrot_cake.jpg';
 import Strawberry from '../../Assets/Strawberry.jpg';
@@ -43,30 +44,27 @@ const ProductItem = (props) => {
     const filteredImages = images.filter(image => image.alt === product.name);
 
     return (
-        <div>
+        <>
 
             <div className="imgContainer">
                 <div className='img'>
                 {filteredImages.map((image, index) => (
-                    <figure key={index}>
+                    <div key={index}>
                         <img src={image.src} alt={image.alt} width="100" height="100" />
-                    
-                    </figure>
-
+                    </div>
                 ))}
                 </div>
-                <div className='productName'>
+                <p className='productName'>
                     {product.name}{" "}
-                    <span>ksh{product.price}</span>
-                <div className='productDesc'>{product.shortDesc}</div>
+                    <p>ksh{product.price}</p>
+                <p className='productDesc'>{product.shortDesc}</p>
                 {product.stock > 0 ? (
                     <small>{product.stock + " Available"}</small>
                 ) : (
                     <small>Out of Stock</small>
                 )
                 }
-                </div>
-                <div className='addToCart'>
+                </p>
                     <button onClick={() => {
                         props.addToCart({
                             id: product.name,
@@ -77,12 +75,10 @@ const ProductItem = (props) => {
                     >
                         Add to Cart
                     </button>
-
                 </div>
 
-            </div>
 
-        </div>
+        </>
     )
 }
 

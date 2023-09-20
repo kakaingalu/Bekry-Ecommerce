@@ -16,10 +16,10 @@ const ProductList = props => {
                 </div>
             </div>
             <div>
-                <div className='headerImage'>
+                <div className='headerImage' height="400">
                     <img src={HeaderImg} alt='header Image'  />
                 </div>
-                <div>
+                <div className='products'>
                     {products && products.length ? (
                         products.map((product, index) => (
                             <ProductItem
