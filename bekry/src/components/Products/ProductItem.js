@@ -7,6 +7,7 @@ import chocolate from '../../Assets/Death_by _chocolate.jpg';
 import Wedding1 from '../../Assets/Wedding1.jpg';
 import Wedding2 from '../../Assets/Wedding2.jpg';
 import Wedding3 from '../../Assets/Wedding3.jpg';
+import Wedding4 from '../../Assets/Wedding4.jpg';
 
 
 const ProductItem = (props) => {
@@ -39,6 +40,10 @@ const ProductItem = (props) => {
         {
             src: Wedding3,
             alt: '3 Tier wedding cake',
+        },
+        {
+            src: Wedding4,
+            alt: 'Chocolate wedding cake',
         }
     ]
     const filteredImages = images.filter(image => image.alt === product.name);
@@ -50,7 +55,7 @@ const ProductItem = (props) => {
                 <div className='img'>
                 {filteredImages.map((image, index) => (
                     <div key={index}>
-                        <img src={image.src} alt={image.alt} width="100" height="100" />
+                        <img className="picsize" src={image.src} alt={image.alt} loading="lazy" />
                     </div>
                 ))}
                 </div>

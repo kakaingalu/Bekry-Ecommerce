@@ -1,26 +1,39 @@
-.headerImage img{
-    width: 100%;
-    height: 20%;
-    object-fit: cover;
-
+.headerImage {
+    height: 600px;
+    margin-bottom: 4rem;
+    
+    
+}
+.headerImg {
+    width: 100vw;
+    height: 74vh;
 }
 
 .imgContainer:hover {
+    cursor: pointer;
+    color: orangered;
+    border: 2px solid orangered;
+    border-radius: 20px;
     /* tran */
 
 }
 
 .imgContainer{
     flex: 1;
+    border: 1px solid orangered;
+    padding: 1rem 0;
+    border-radius: 20px;
 }
 button {
     /* flex: 1 1 50%; */
-    padding: 1rem;
+    padding: 0.5rem 1rem;
 }
 
 button:hover {
     cursor: pointer;
     border: 2px solid orangered;
+    color: orangered; 
+    border-radius: 5px;
 }
 
 .products {
@@ -38,4 +51,30 @@ button:hover {
 
 .img {
     display: block;
+}
+.headerImage{
+    margin-bottom: 3rem;
+    position: relative;
+}
+.shopButton {
+    position: absolute;
+    top: 80px;
+    left: 40px;
+    border-radius: 5px;
+    margin-top: 2rem;
+}
+
+.picsize {
+    height: 250px;
+    width: 250px;
+}
+h3 {
+    position: absolute;
+    top: 55px;
+    left: 40px;
+}
+h1 {
+    position: absolute;
+    top: 0;
+    left: 40px;
 }

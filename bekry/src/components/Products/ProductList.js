@@ -2,7 +2,7 @@ import React from 'react';
 import './Products.css'
 import ProductItem from './ProductItem';
 import withContext from '../../withContext';
-import HeaderImg from '../../Assets/headerImg.jpg';
+import HeaderImg from '../../Assets/headerImg1.jpg';
 
 
 const ProductList = props => {
@@ -17,8 +17,12 @@ const ProductList = props => {
             </div>
             <div>
                 <div className='headerImage' height="400">
-                    <img src={HeaderImg} alt='header Image'  />
+                    <h1 className='intro'>Welcome to Bekry</h1>
+                    <h3 className='intro'>An online pastry Shop</h3>
+                    <button className='shopButton'>Shop Now</button>
+                    <img className="headerImg" src={HeaderImg} alt='header Image' />  
                 </div>
+                <p>Our top picks</p>
                 <div className='products'>
                     {products && products.length ? (
                         products.map((product, index) => (
