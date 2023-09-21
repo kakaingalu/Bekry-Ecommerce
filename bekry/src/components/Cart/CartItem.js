@@ -6,6 +6,7 @@ import chocolate from '../../Assets/Death_by _chocolate.jpg';
 import Wedding1 from '../../Assets/Wedding1.jpg';
 import Wedding2 from '../../Assets/Wedding2.jpg';
 import Wedding3 from '../../Assets/Wedding3.jpg';
+import Wedding4 from '../../Assets/Wedding4.jpg';
 
 
 const CartItem = props => {
@@ -40,7 +41,11 @@ const CartItem = props => {
     {
         src: Wedding3,
         alt: '3 Tier wedding cake',
-    }
+    },
+    {
+      src: Wedding4,
+      alt: 'Chocolate wedding cake',
+  }
 ]
 
   const filteredImages = images.filter(image => image.alt === product.name);
