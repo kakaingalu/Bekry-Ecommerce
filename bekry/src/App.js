@@ -126,6 +126,7 @@ function App(props) {
     props.clearCart();
   };
 
+
   return (
     <Context.Provider
     value={{
@@ -171,7 +172,7 @@ function App(props) {
         </div>
 
         <Routes>
-          <Route path="/" element={<Outlet />} />
+          <Route path="/" element={<Shop />} />
           <Route path="/shop" element={<Shop />} />
           <Route path='/product-list' element={<ProductList />}/>
           <Route path='/login' element={<Login />}/>
