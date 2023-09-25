@@ -18,13 +18,18 @@ import {
 import Shop from './components/Products/Shop';
 import Context from './Context';
 import AddProduct from './components/addProduct/addProduct';
+import useToken from './useToken';
 
 function App(props) {
 
   const [user, setUser] = useState(null);
   const [products, setProduct] = useState([]);
   const [cart, setCart] = useState({});
-  // const navigate = useNavigate();
+  const { token, setToken } = useToken();
+
+ 
+
+  //const navigate = useNavigate();
 
 
   useEffect(() => {
@@ -42,6 +47,10 @@ function App(props) {
 
     fetchData();
   }, []);
+
+  // if(!token) {
+  //   return <Login setToken={setToken} />
+  // }
 
    const login = async(email, password) => {
      const res = await axios.post('https//localhost:3001/login', {email, password}
@@ -126,7 +135,6 @@ function App(props) {
     props.clearCart();
   };
 
-
   return (
     <Context.Provider
     value={{
@@ -175,7 +183,11 @@ function App(props) {
           <Route path="/" element={<Shop />} />
           <Route path="/shop" element={<Shop />} />
           <Route path='/product-list' element={<ProductList />}/>
-          <Route path='/login' element={<Login />}/>
+          
+          <Route path='/login' element={<Login setToken={setToken}/>}/>
+
+          
+          
           <Route path='/cart' element={<Cart />}/>
           <Route path='/addProduct' element={<AddProduct/>} />
 

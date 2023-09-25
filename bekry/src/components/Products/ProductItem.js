@@ -12,6 +12,7 @@ import Wedding4 from '../../Assets/Wedding4.jpg';
 
 const ProductItem = (props) => {
     const { product } = props;
+  
     const images = [
         {
             src: cakeSlice,
@@ -59,7 +60,7 @@ const ProductItem = (props) => {
                     </div>
                 ))}
                 </div>
-                <p className='productName'>
+                <div className='productName'>
                     {product.name}{" "}
                     <p>ksh{product.price}</p>
                 <p className='productDesc'>{product.shortDesc}</p>
@@ -69,7 +70,8 @@ const ProductItem = (props) => {
                     <small>Out of Stock</small>
                 )
                 }
-                </p>
+                </div>
+                
                     <button onClick={() => {
                         props.addToCart({
                             id: product.name,
