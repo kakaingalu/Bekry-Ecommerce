@@ -1,3 +1,12 @@
+html {
+  /* height: 100%; */
+}
+body {
+  /* position: relative; */
+  /* min-height: 100%; */
+  overflow-y: scroll;
+
+}
 .App {
   text-align: center;
 }
@@ -68,4 +77,55 @@
   filter: invert(100%);
   object-fit: cover;
   height: 1.4rem;
+}
+
+.footer {
+  background-color: #F8B7B5;
+  padding: 0.5rem;
+  margin-top: 10rem;
+  font-family: Poppins, sans-serif;
+  /* position: absolute; */
+  /* width: 100%; */
+  /* left: 0;
+  right: 0;
+  bottom: 0; */
+  margin-bottom: 0;
+}
+
+.Images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.Images img {
+  margin-right: 8rem;
+}
+
+.Images img:hover {
+  transform: scale(1.5);
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.footer h2 {
+  
+}
+
+.header {
+  text-align: left;
+}
+
+.Images-payment {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.photos {
+  margin-right: 8rem;
 }
