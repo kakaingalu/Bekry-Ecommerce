@@ -2,6 +2,7 @@ import React from 'react';
 import './Products.css'
 import ProductItem from './ProductItem';
 import withContext from '../../withContext';
+import Footer from '../Footer/Footer';
 // import HeaderImg from '../../Assets/headerImg1.jpg';
 
 
@@ -40,6 +41,7 @@ const ProductList = props => {
                     }
                 </div>
             </div>
+            <Footer />
         </>
     );
 };

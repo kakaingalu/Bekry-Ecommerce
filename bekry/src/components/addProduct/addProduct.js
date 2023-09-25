@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import withContext from '../../withContext';
+import Footer from "../Footer/Footer";
 
 const initState = {
   name: "",
@@ -136,6 +137,7 @@ function AddProduct(props) {
           </div>
         </div>
       </form>
+      <Footer /> 
     </>
   );
 }
