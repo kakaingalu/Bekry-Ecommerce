@@ -1,64 +1,57 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+//import './Login.css';
+import PropTypes from 'prop-types';
 import { useNavigate } from "react-router-dom";
-import withContext from "../../withContext";
 
-const Login = (props) => {
-  const [state, setState] = useState({
-    username: "",
-    password: "",
-    error: "",
-  });
+async function loginUser(credentials) {
+  return fetch('http://localhost:8080/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(credentials)
+  })
+    .then(data => data.json())
+ }
+
+export default function Login({ setToken }) {
+  const [username, setUserName] = useState();
+  const [password, setPassword] = useState();
   const navigate = useNavigate();
 
-  const handleChange = (e) => setState({ ...state, [e.target.name]: e.target.value, error: "" });
-
-  const login = (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
-
-    const { username, password } = state;
-    if (!username || !password) {
-      setState({ ...state, error: "Fill all fields!" });
-      return;
-    }
-
-    props.context.login(username, password).then((loggedIn) => {
-      if (!loggedIn) {
-        setState({ ...state, error: "Invalid Credentials" });
-      } else {
-        navigate("/products");
-      }
+    const token = await loginUser({
+      username,
+      password
     });
-  };
+    setToken(token);
+  }
+  return(
+    <div className="login-wrapper">
+      <h1>Please Log In</h1>
+      <form onSubmit={handleSubmit}>
+        <label>
+          <p>Username</p>
+          <input type="text" onChange={e => setUserName(e.target.value)} />
+        </label>
+        <label>
+          <p>Password</p>
+          <input type="password" onChange={e => setPassword(e.target.value)} />
+        </label>
+        <div>
+        {username && password && (
+          <button onClick={() => navigate('/Shop')}>Submit</button>
 
-  return !props.context.user ? (
-    <>
-      <div className="hero is-primary">
-        <div className="hero-body container">
-          <h4 className="title">Login</h4>
+        )}
+          
         </div>
-      </div>
-      <br />
-      <br />
-      <form onSubmit={login}>
-        <div className="columns is-mobile is-centered">
-          <div className="column is-one-third">
-            <div className="field">
-              <label className="label">Email: </label>
-              <input className="input" type="email" name="username" onChange={handleChange} />
-            </div>
-            <div className="field">
-              <label className="label">Password: </label>
-              <input className="input" type="password" name="password" onChange={handleChange} />
-            </div>
-            {state.error && <div className="has-text-danger">{state.error}</div>}
-            <div className="field is-clearfix">
-              <button className="button is-primary is-outlined is-pulled-right">Submit</button>
-            </div>
-          </div>
-        </div>
+        
       </form>
-    </>
-  ) : null;
-};
+    </div>
+  )
+}
 
-export default withContext(Login);
+Login.propTypes = {
+  setToken: PropTypes.func.isRequired
+}
