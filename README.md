@@ -1,5 +1,15 @@
 # Bekry-Ecommerce
-An eCommerce website for ordering pastries 
+An eCommerce website for ordering pastries
+
+# Table of Contents
+** Introduction
+** Features
+** Getting Started
+* Prerequisites
+* Installation
+* Usage
+* Contributing
+
 
 ## Main technologies used:
 ### React js
@@ -22,10 +32,10 @@ The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
 # Third parties that were used in this project include:
-``` 
+```
 npm install axios
 ```
-``` 
+```
 npm install json-server json-server-auth
 ```
 ```
@@ -36,8 +46,3 @@ npm install jwt-decode
 ## json server was used to mock a fake back end because the main purpose of the project was to focus on the front end
 
 ### We created the mockup using figma
-
-
-
-
-
