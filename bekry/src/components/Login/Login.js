@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 //import './Login.css';
 import PropTypes from 'prop-types';
 import { useNavigate } from "react-router-dom";
+import Footer from '../Footer/Footer';
 
 async function loginUser(credentials) {
   return fetch('http://localhost:8080/login', {
@@ -28,27 +29,30 @@ export default function Login({ setToken }) {
     setToken(token);
   }
   return(
-    <div className="login-wrapper">
-      <h1>Please Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          <p>Username</p>
-          <input type="text" onChange={e => setUserName(e.target.value)} />
-        </label>
-        <label>
-          <p>Password</p>
-          <input type="password" onChange={e => setPassword(e.target.value)} />
-        </label>
-        <div>
-        {username && password && (
-          <button onClick={() => navigate('/Shop')}>Submit</button>
+    <>
+      <div className="login-wrapper">
+        <h1>Please Log In</h1>
+        <form onSubmit={handleSubmit}>
+          <label>
+            <p>Username</p>
+            <input type="text" onChange={e => setUserName(e.target.value)} />
+          </label>
+          <label>
+            <p>Password</p>
+            <input type="password" onChange={e => setPassword(e.target.value)} />
+          </label>
+          <div>
+          {username && password && (
+            <button onClick={() => navigate('/Shop')}>Submit</button>
 
-        )}
+          )}
+            
+          </div>
           
-        </div>
-        
-      </form>
-    </div>
+        </form>
+      </div>
+      <Footer />
+    </>
   )
 }
 
