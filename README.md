@@ -77,9 +77,9 @@ Open your web browser and navigate to http://localhost:3000 to view the app.
 
 ## Usage
 To start the development server and run the app locally, we used the following command:
-* npm start  => to run the frontend part
-* node server.js  to run the login server
-* ./node_modules/.bin/json-server-auth ./backend/db.json --port 3001  to run the backend.
+* ``` npm start ```
+* ``` node server.js ```
+* ```./node_modules/.bin/json-server-auth ./backend/db.json --port 3001```
 
 ## Contributing
 We welcome contributions from the community. If you'd like to contribute to the project, please follow these steps:
