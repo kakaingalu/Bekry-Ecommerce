@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-//import './Login.css';
+import './Login.css';
 import PropTypes from 'prop-types';
 import { useNavigate } from "react-router-dom";
 import Footer from '../Footer/Footer';
+import logo from '../../Assets/logo.png'
 
 async function loginUser(credentials) {
   return fetch('http://localhost:8080/login', {
@@ -30,20 +31,24 @@ export default function Login({ setToken }) {
   }
   return(
     <>
+      <img src={logo} alt="logo" className="logoPng" />
       <div className="login-wrapper">
-        <h1>Please Log In</h1>
+        <h4>Welcom to Bekry</h4>
+        <h4>Please login to continue</h4>
         <form onSubmit={handleSubmit}>
           <label>
             <p>Username</p>
-            <input type="text" onChange={e => setUserName(e.target.value)} />
+            <input type="text" onChange={e => setUserName(e.target.value)} 
+            placeholder='Enter your email'/>
           </label>
           <label>
             <p>Password</p>
-            <input type="password" onChange={e => setPassword(e.target.value)} />
+            <input type="password" onChange={e => setPassword(e.target.value)}
+            placeholder='Enter your password' />
           </label>
           <div>
           {username && password && (
-            <button onClick={() => navigate('/Shop')}>Submit</button>
+            <button onClick={() => navigate('/ProductList')}>Submit</button>
 
           )}
             

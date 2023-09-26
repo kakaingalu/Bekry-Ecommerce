@@ -12,8 +12,6 @@ import {
   Route,
   Routes,
   Link,
-  Outlet,
-  useNavigate
 } from "react-router-dom";
 import Shop from './components/Products/Shop';
 import Context from './Context';

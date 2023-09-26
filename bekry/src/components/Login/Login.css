@@ -1,0 +1,30 @@
+h1 {
+    margin-top: 2rem;
+    /* text-align: center; */
+}
+.login-wrapper {
+    margin-top: 8rem;
+    font-family: Poppins;
+    padding: 1rem;
+    font-size: medium;
+    text-align: center;
+}
+
+input {
+    padding: 0.8rem;
+    border-radius: 5px;
+    border: none;
+    background-color: peachpuff;
+}
+
+button {
+    margin-top: 1rem;
+    padding: 0.5rem 2rem;
+    border-radius: 4px;
+}
+.logoPng {
+    height: 50px;
+    margin-top: 6rem;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
