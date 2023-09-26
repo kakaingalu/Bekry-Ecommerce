@@ -4,7 +4,7 @@ import Instagram from "../../Assets/instagram.svg";
 import WhatsApp from "../../Assets/whatsapp.svg";
 import Facebook from "../../Assets/facebook.svg";
 import CreditCard from "../../Assets/mastercard_logo.svg";
-import Mpesa from "/home/wanton/Bekry-Ecommerce/bekry/src/Assets/512px-M-PESA_LOGO-01.svg.png";
+import Mpesa from "../../Assets/Mpesa.svg.png";
 import Paypal from "../../Assets/paypal_logo_new.svg";
 
 

@@ -1,5 +1,8 @@
 # Bekry-Ecommerce
-An eCommerce website for ordering pastries
+![Bakery Website Screenshot](photos/photo1.png)
+![Bakery Website Screenshot](photos/photo2.png)
+![Bakery Website Screenshot](photos/photo3.png)
+
 
 ## Table of Contents
 * Introduction

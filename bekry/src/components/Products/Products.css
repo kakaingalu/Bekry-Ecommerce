@@ -1,8 +1,8 @@
 .headerImage {
     height: 600px;
     margin-bottom: 4rem;
-    
-    
+
+
 }
 .headerImg {
     width: 100vw;
@@ -32,7 +32,7 @@ button {
 button:hover {
     cursor: pointer;
     border: 2px solid orangered;
-    color: orangered; 
+    color: orangered;
     border-radius: 5px;
 }
 
