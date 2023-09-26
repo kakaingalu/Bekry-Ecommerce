@@ -31,8 +31,8 @@ export default function Login({ setToken }) {
   }
   return(
     <>
-      <img src={logo} alt="logo" className="logoPng" />
       <div className="login-wrapper">
+        <img src={logo} alt="logo" className="logoPng" />
         <h4>Welcom to Bekry</h4>
         <h4>Please login to continue</h4>
         <form onSubmit={handleSubmit}>
@@ -48,7 +48,7 @@ export default function Login({ setToken }) {
           </label>
           <div>
           {username && password && (
-            <button onClick={() => navigate('/ProductList')}>Submit</button>
+            <button onClick={() => navigate('/product-list')}>Submit</button>
 
           )}
             
